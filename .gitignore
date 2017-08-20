@@ -1,0 +1,14 @@
+**.pyc
+.cache
+.DS_Store
+
+# Ignore distribution side-products
+dist/
+build/
+deviceidentifier.egg-info/
+
+# Ignore test and checker outputs
+.tox
+.coverage
+coverage.xml
+reports/
