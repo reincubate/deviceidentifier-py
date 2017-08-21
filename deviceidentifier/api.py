@@ -5,7 +5,7 @@ import json
 
 
 def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
-            gsma_imei=None, gsma_iccid=None, cdma_meid=None ):
+            gsma_imei=None, gsma_iccid=None, cdma_meid=None, unknown=None ):
 
     if not token:
         raise MissingTokenError( 'Token not specified; must be provided to authenticate with the API' )
@@ -36,11 +36,19 @@ def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
     if cdma_meid:
         built_query['identifiers']['cdma_meid'] = cdma_meid
 
+    endpoint = 'enhance-metadata'
+
+    if unknown:
+        if len( built_query['identifiers'].keys() ) > 0:
+            raise Exception( 'Cannot combine identify request with lookups' )
+        built_query['identifiers']['unknown'] = unknown
+        endpoint = 'identify-identifier'
+
     if len( built_query['identifiers'].keys() ) == 0:
         raise Exception( 'No identifiers passed to query' )
 
     response = requests.post(
-        'http://localhost:8000/enhance-metadata/',
+        'http://localhost:8000/%s/' % endpoint,
         data=json.dumps( built_query )
     )
 

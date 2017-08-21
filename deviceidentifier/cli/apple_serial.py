@@ -3,6 +3,7 @@ from deviceidentifier.api import query
 
 import os, sys, json
 
+
 def main():
     # Sample showing how to look up data from an Apple serial number.
 

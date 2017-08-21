@@ -18,7 +18,7 @@ $ export RI_DEVID_TOKEN='api-authentication-token'
 * Apple's serial numbers: legacy (80s & 90s), old (early 2000s) and post-2010 formats
 
 ```bash
-$  python -m deviceidentifier.cli.apple_serial 5K31926NDZZ
+$ python -m deviceidentifier.cli.apple_serial 5K31926NDZZ
 ```
 
 ```json
@@ -174,6 +174,26 @@ $ python -m deviceidentifier.cli.gsma_iccid 8965880812100011146
                 "name": "EZI-PhoneCard"
             }
         }
+    },
+    "system": {
+        "message": "",
+        "code": "ok"
+    }
+}
+```
+
+### Meta
+
+* Identifying unknown identifiers
+
+```bash
+$ python -m deviceidentifier.cli.identify iPhone5,2
+```
+
+```json
+{
+    "identifiers": {
+        "iPhone5,2": "apple_identifier"
     },
     "system": {
         "message": "",
