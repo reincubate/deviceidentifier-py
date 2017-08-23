@@ -48,7 +48,7 @@ def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
         raise Exception( 'No identifiers passed to query' )
 
     response = requests.post(
-        'http://localhost:8000/%s/' % endpoint,
+        'https://di-api.reincubate.com/%s/' % endpoint,
         data=json.dumps( built_query )
     )
 
