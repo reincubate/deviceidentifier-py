@@ -1,7 +1,6 @@
 from deviceidentifier.util.exceptions import BadTokenError, MissingTokenError
 from deviceidentifier import api
 
-
 import pytest, os
 
 
