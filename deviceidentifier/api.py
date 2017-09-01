@@ -5,7 +5,9 @@ import json
 
 
 def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
-            gsma_imei=None, gsma_iccid=None, cdma_meid=None, unknown=None ):
+            apple_internal_name=None, apple_udid=None, apple_anumber=None,
+            gsma_imei=None, gsma_tac=None, gsma_iccid=None,
+            cdma_meid=None, unknown=None ):
 
     if not token:
         raise MissingTokenError( 'Token not specified; must be provided to authenticate with the API' )
@@ -27,8 +29,20 @@ def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
     if apple_identifier:
         built_query['identifiers']['apple_identifier'] = apple_identifier
 
+    if apple_internal_name:
+        built_query['identifiers']['apple_internal_name'] = apple_internal_name
+
+    if apple_udid:
+        built_query['identifiers']['apple_udid'] = apple_udid
+
+    if apple_anumber:
+        built_query['identifiers']['apple_anumber'] = apple_anumber
+
     if gsma_imei:
         built_query['identifiers']['gsma_imei'] = gsma_imei
+
+    if gsma_tac:
+        built_query['identifiers']['gsma_tac'] = gsma_tac
 
     if gsma_iccid:
         built_query['identifiers']['gsma_iccid'] = gsma_iccid

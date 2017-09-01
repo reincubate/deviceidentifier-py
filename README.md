@@ -95,6 +95,55 @@ $ python -m deviceidentifier.cli.apple_identifier iPhone5,3
 }
 ```
 
+* Apple internal names
+
+```bash
+$ python -m deviceidentifier.cli.apple_internal_name N90AP
+```
+```json
+{
+    "identifiers": {
+        "apple_internal_name": {
+            "identifier": null
+        }
+    },
+    "system": {
+        "message": "",
+        "code": "ok"
+    }
+}
+```
+
+* Apple UDIDs
+
+```bash
+$ python -m deviceidentifier.cli.apple_udid XXX
+```
+```json
+{
+    "identifiers": {},
+    "system": {
+        "message": "",
+        "code": "ok"
+    }
+}
+```
+
+* Apple "A" numbers
+
+```bash
+python -m deviceidentifier.cli.apple_anumber A1586
+```
+```json
+{
+    "identifiers": {},
+    "system": {
+        "message": "Not implemented",
+        "code": "error"
+    }
+}
+```
+
 ### CDMA
 
 * Mobile Equipment Identifier (MEIDs)
@@ -108,8 +157,12 @@ $ python -m deviceidentifier.cli.cdma_meid 354403064522046
     "identifiers": {
         "cdma_meid": {
             "checksum": "6",
-            "region": "35",
             "serial": "452204",
+            "regionCode": {
+                "origin": "Ireland",
+                "code": "35",
+                "group": "Comreg"
+            },
             "pESN": "808D1904",
             "manufacturer": "440306"
         }
@@ -134,10 +187,20 @@ $ python -m deviceidentifier.cli.gsma_imei 352073069165968
     "identifiers": {
         "gsma_imei": {
             "svn": null,
+            "reportingBodyIdentifier": {
+                "origin": "Ireland",
+                "code": "35",
+                "group": "Comreg"
+            },
             "checksum": "8",
+            "tac": {
+                "model": null,
+                "code": "35207306",
+                "modelCode": null,
+                "manufacturer": null
+            },
             "serial": "916596",
-            "type": "IMEI",
-            "tac": "35207306"
+            "type": "IMEI"
         }
     },
     "system": {
@@ -146,6 +209,26 @@ $ python -m deviceidentifier.cli.gsma_imei 352073069165968
     }
 }
 ```
+
+* Type allocation codes (TAC)
+
+```bash
+$ python -m deviceidentifier.cli.gsma_tac
+```
+```json
+{
+    "identifiers": {
+        "gsma_tac": {
+
+        }
+    },
+    "system": {
+        "message": "",
+        "code": "ok"
+    }
+}
+```
+
 
 * ICCIDs
 
@@ -203,11 +286,6 @@ $ python -m deviceidentifier.cli.identify iPhone5,2
 ```
 
 ## Not implemented
-
-### Apple
-
-* Apple "A" numbers
-* Apple UDIDs
 
 ### CDMA
 
