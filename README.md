@@ -11,7 +11,11 @@ $ pip install deviceidentifier
 $ export RI_DEVID_TOKEN='api-authentication-token'
 ```
 
-## Implemented
+## Requesting an access token
+
+Authentication to ricloud is performed using a token provided by Reincubate, which can be obtained by contacting [enterprise@reincubate.com](mailto:enterprise@reincubate.com).
+
+## Usage
 
 ### Apple
 
@@ -39,7 +43,7 @@ $ python -m deviceidentifier.cli.apple_serial 5K31926NDZZ
             "configuration": {
                 "sku": "iPhone 4",
                 "image": {
-                    "url": "http://localhost:8000/resource-159c9e87a3d6bbf5075bb030fa2925a0/",
+                    "url": "https://di-api.reincubate.com/resource-159c9e87a3d6bbf5075bb030fa2925a0/",
                     "x": 120,
                     "y": 120
                 }
@@ -285,7 +289,7 @@ $ python -m deviceidentifier.cli.identify iPhone5,2
 }
 ```
 
-## Not implemented
+## Not implemented yet in this client
 
 ### CDMA
 
@@ -294,3 +298,29 @@ $ python -m deviceidentifier.cli.identify iPhone5,2
 ### GSMA
 
 * TAC codes
+
+## Troubleshooting
+
+See the [support & service status](https://docs.reincubate.com/ricloud/status/?utm_source=github&utm_medium=deviceidentifier-py&utm_campaign=deviceidentifier) page.
+
+## <a name="more"></a>Need more functionality?
+
+Reincubate's vision is to provide data access, extraction and recovery technology for all app platforms - be they mobile, desktop, web, appliance or in-vehicle.
+
+The company was founded in 2008 and was first to market with both iOS and iCloud data extraction technology. With over half a decade's experience helping law enforcement and security organisations access iOS data, Reincubate has licensed software to government, child protection and corporate clients around the world.
+
+The company can help users with:
+
+* iCloud access and data recovery
+* Recovery of data deleted from SQLite databases
+* Bulk iOS data recovery
+* Forensic examination of iOS data
+* Passcode, password, keybag and keychain analysis
+* Custom iOS app data extraction
+* Advanced PList, TypedStream and Mbdb manipulation
+
+Contact [Reincubate](https://www.reincubate.com/?utm_source=github&utm_medium=deviceidentifier-py&utm_campaign=deviceidentifier) for more information.
+
+## Terms & license
+
+See the `LICENSE` file for details on this implementation's license. Users must not use the API in any way that is unlawful, illegal, fraudulent or harmful; or in connection with any unlawful, illegal, fraudulent or harmful purpose or activity.
