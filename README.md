@@ -17,7 +17,9 @@ Authentication to ricloud is performed using a token provided by Reincubate, whi
 
 ## Usage
 
-### Apple
+### Enhancing metadata
+
+#### Apple
 
 * Apple's serial numbers: legacy (80s & 90s), old (early 2000s) and post-2010 formats
 
@@ -121,7 +123,7 @@ $ python -m deviceidentifier.cli.apple_internal_name N90AP
 * Apple UDIDs
 
 ```bash
-$ python -m deviceidentifier.cli.apple_udid XXX
+$ python -m deviceidentifier.cli.apple_udid 49BBEEE741F04245B245E8842E85CCF0
 ```
 ```json
 {
@@ -148,7 +150,9 @@ python -m deviceidentifier.cli.apple_anumber A1586
 }
 ```
 
-### CDMA
+#### CDMA
+
+* ESNs (not implemented yet in this client)
 
 * Mobile Equipment Identifier (MEIDs)
 
@@ -178,7 +182,7 @@ $ python -m deviceidentifier.cli.cdma_meid 354403064522046
 }
 ```
 
-### GSMA
+#### GSMA
 
 * IMEIs
 
@@ -269,9 +273,7 @@ $ python -m deviceidentifier.cli.gsma_iccid 8965880812100011146
 }
 ```
 
-### Meta
-
-* Identifying unknown identifiers
+### Identifying an identifier
 
 ```bash
 $ python -m deviceidentifier.cli.identify iPhone5,2
@@ -288,16 +290,6 @@ $ python -m deviceidentifier.cli.identify iPhone5,2
     }
 }
 ```
-
-## Not implemented yet in this client
-
-### CDMA
-
-* ESNs
-
-### GSMA
-
-* TAC codes
 
 ## API client implementations
 
