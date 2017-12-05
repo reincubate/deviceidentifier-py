@@ -299,6 +299,13 @@ $ python -m deviceidentifier.cli.identify iPhone5,2
 
 * TAC codes
 
+## API client implementations
+
+Check out the Open Source libraries for working with the API:
+
+* [Python](https://github.com/reincubate/deviceidentifier-py)
+* [C# / .NET](https://github.com/reincubate/deviceidentifier-csharp)
+
 ## Troubleshooting
 
 See the [support & service status](https://docs.reincubate.com/ricloud/status/?utm_source=github&utm_medium=deviceidentifier-py&utm_campaign=deviceidentifier) page.
