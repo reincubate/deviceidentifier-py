@@ -196,7 +196,7 @@ $ python -m deviceidentifier.cli.cdma_meid 354403064522046
 
 #### GSMA
 
-* IMEIs (enriched with data from Apple's GSX service for clients with access)
+##### IMEIs (enriched with data from Apple's GSX service for clients with access)
 
 ```bash
 $ python -m deviceidentifier.cli.gsma_imei 990001858419963
