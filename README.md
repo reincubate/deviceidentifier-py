@@ -21,7 +21,7 @@ Authentication to ricloud is performed using a token provided by Reincubate, whi
 
 #### Apple
 
-* Apple's serial numbers: legacy (80s & 90s), old (early 2000s) and post-2010 formats
+##### Apple serial numbers: legacy (80s & 90s), old (early 2000s) and post-2010 formats
 
 ```bash
 $ python -m deviceidentifier.cli.apple_serial 5K31926NDZZ
@@ -61,7 +61,7 @@ $ python -m deviceidentifier.cli.apple_serial 5K31926NDZZ
 }
 ```
 
-* Apple model numbers
+##### Apple model numbers
 
 ```bash
 $ python -m deviceidentifier.cli.apple_model PC605B
@@ -82,7 +82,7 @@ $ python -m deviceidentifier.cli.apple_model PC605B
 }
 ```
 
-* Apple identifiers
+##### Apple identifiers
 
 ```bash
 $ python -m deviceidentifier.cli.apple_identifier iPhone5,3
@@ -91,7 +91,8 @@ $ python -m deviceidentifier.cli.apple_identifier iPhone5,3
 {
     "identifiers": {
         "apple_identifier": {
-            "sku": "iPhone 5C"
+            "sku": "iPhone 5c",
+            "variant": null
         }
     },
     "system": {
@@ -101,16 +102,38 @@ $ python -m deviceidentifier.cli.apple_identifier iPhone5,3
 }
 ```
 
-* Apple internal names
+##### Apple internal names
 
 ```bash
-$ python -m deviceidentifier.cli.apple_internal_name N90AP
+$ python -m deviceidentifier.cli.apple_internal_name N92AP
 ```
 ```json
 {
     "identifiers": {
-        "apple_internal_name": {
-            "identifier": null
+        "apple_identifier": {
+            "sku": "iPhone 4",
+            "variant": "CDMA"
+        },
+        "identifier": "iPhone3,3"
+    },
+    "system": {
+        "message": "",
+        "code": "ok"
+    }
+}
+```
+
+##### Apple UDIDs
+
+```bash
+$ python -m deviceidentifier.cli.apple_udid B958E359-34C2-42F4-BD0C-C985E6D5376B
+```
+```json
+{
+    "identifiers": {
+        "apple_udid": {
+            "valid": true,
+            "compromised": false
         }
     },
     "system": {
@@ -120,41 +143,30 @@ $ python -m deviceidentifier.cli.apple_internal_name N90AP
 }
 ```
 
-* Apple UDIDs
-
-```bash
-$ python -m deviceidentifier.cli.apple_udid 49BBEEE741F04245B245E8842E85CCF0
-```
-```json
-{
-    "identifiers": {},
-    "system": {
-        "message": "",
-        "code": "ok"
-    }
-}
-```
-
-* Apple "A" numbers
+##### Apple "A" numbers
 
 ```bash
 python -m deviceidentifier.cli.apple_anumber A1586
 ```
 ```json
 {
-    "identifiers": {},
+    "identifiers": {
+        "apple_identifier": {
+            "sku": "iPhone 6",
+            "variant": null
+        },
+        "identifier": "iPhone7,2"
+    },
     "system": {
-        "message": "Not implemented",
-        "code": "error"
+        "message": "",
+        "code": "ok"
     }
 }
 ```
 
 #### CDMA
 
-* ESNs (not implemented yet in this client)
-
-* Mobile Equipment Identifier (MEIDs)
+##### Mobile Equipment Identifier (MEIDs)
 
 ```bash
 $ python -m deviceidentifier.cli.cdma_meid 354403064522046
@@ -184,10 +196,10 @@ $ python -m deviceidentifier.cli.cdma_meid 354403064522046
 
 #### GSMA
 
-* IMEIs
+* IMEIs (enriched with data from Apple's GSX service for clients with access)
 
 ```bash
-$ python -m deviceidentifier.cli.gsma_imei 352073069165968
+$ python -m deviceidentifier.cli.gsma_imei 990001858419963
 ```
 
 ```json
@@ -195,20 +207,55 @@ $ python -m deviceidentifier.cli.gsma_imei 352073069165968
     "identifiers": {
         "gsma_imei": {
             "svn": null,
+            "gsx": {
+                "realPurchaseDate": "2012-11-19",
+                "simStatus": "Locked",
+                "initialCarrier": "Sprint - United States USA",
+                "seller": "SPRINT PURCH AGENCY NEXTEL SYS CORP",
+                "coverageStatus": "Out Of Warranty (No Coverage)",
+                "appleSerial": "DX4JJSKCDTD3",
+                "appleId": null,
+                "model": "IPHONE 4S,MM,16GB,WHITE",
+                "saleRegion": "United States",
+                "estimatedPurchaseDate": "2012-11-19"
+            },
             "reportingBodyIdentifier": {
-                "origin": "Ireland",
-                "code": "35",
-                "group": "Comreg"
+                "origin": "For multi RAT 3GPP2/3GPP",
+                "code": "99",
+                "group": "GHA"
             },
-            "checksum": "8",
-            "tac": {
-                "model": null,
-                "code": "35207306",
+            "checksum": "3",
+            "tac": "99000185",
+            "tacLookup": {
+                "product": "iPhone 4s",
                 "modelCode": null,
-                "manufacturer": null
+                "manufacturer": "Apple"
             },
-            "serial": "916596",
-            "type": "IMEI"
+            "serial": "841996",
+            "type": "IMEI",
+            "appleSerialLoopup": {
+                "manufactureDate": "2012-10-07",
+                "configurationCode": {
+                    "colour": null,
+                    "code": "DTD3",
+                    "size": null
+                },
+                "uniqueId": {
+                    "productionNo": 30714,
+                    "value": "SKC"
+                },
+                "coverageUrl": "https://checkcoverage.apple.com/gb/en?sn=DX4JJSKCDTD3",
+                "configuration": {
+                    "sku": "iPhone 4S",
+                    "image": {
+                        "url": "https://di-api.reincubate.com/resource-b07a09fb6ea5fad57fb4254240b8d0f2/",
+                        "x": 120,
+                        "y": 120
+                    }
+                },
+                "serialType": "2010",
+                "manufacturer": "DX4"
+            }
         }
     },
     "system": {
@@ -218,16 +265,18 @@ $ python -m deviceidentifier.cli.gsma_imei 352073069165968
 }
 ```
 
-* Type allocation codes (TAC)
+##### Type allocation codes (TAC)
 
 ```bash
-$ python -m deviceidentifier.cli.gsma_tac
+$ python -m deviceidentifier.cli.gsma_tac 01326300
 ```
 ```json
 {
     "identifiers": {
         "gsma_tac": {
-
+            "product": "iPhone 4",
+            "modelCode": "MD198HN/A",
+            "manufacturer": "Apple"
         }
     },
     "system": {
@@ -237,8 +286,7 @@ $ python -m deviceidentifier.cli.gsma_tac
 }
 ```
 
-
-* ICCIDs
+##### ICCIDs
 
 ```bash
 $ python -m deviceidentifier.cli.gsma_iccid 8965880812100011146
@@ -249,7 +297,7 @@ $ python -m deviceidentifier.cli.gsma_iccid 8965880812100011146
     "identifiers": {
         "gsma_iccid": {
             "atiiccid": null,
-            "simNunber": "001114",
+            "simNumber": "001114",
             "majorIndustry": {
                 "industry": "Telecommunications administrations and private operating agencies",
                 "code": "89",
@@ -257,10 +305,13 @@ $ python -m deviceidentifier.cli.gsma_iccid 8965880812100011146
             },
             "checksum": "6",
             "year": "12",
-            "month": "August",
+            "month": "08",
             "switch": "10",
-            "country": "65",
             "issuer": {
+                "country": {
+                    "code": "65",
+                    "name": "India"
+                },
                 "code": "88",
                 "name": "EZI-PhoneCard"
             }
