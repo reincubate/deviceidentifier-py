@@ -13,9 +13,6 @@ def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
         raise MissingTokenError( 'Token not specified; must be provided to authenticate with the API' )
 
     built_query = {
-        'client': {
-            'token': token,
-        },
         'identifiers': {
         },
     }
@@ -63,7 +60,8 @@ def query(  token, apple_model=None, apple_serial=None, apple_identifier=None,
 
     response = requests.post(
         'https://di-api.reincubate.com/%s/' % endpoint,
-        data=json.dumps( built_query )
+        data=json.dumps( built_query ),
+        headers={ 'Authorization': 'Token %s' % token, },
     )
 
     if response.status_code != 200:
