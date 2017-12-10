@@ -64,15 +64,22 @@ $ python -m deviceidentifier.cli.apple_serial 5K31926NDZZ
 ##### Apple model numbers
 
 ```bash
-$ python -m deviceidentifier.cli.apple_model PC605B
+$ python -m deviceidentifier.cli.apple_model MC605LL/A
 ```
 ```json
 {
     "identifiers": {
         "apple_model": {
-            "region": "Ireland, UK, or replacement unit",
             "code": "C605",
-            "type": "Personalised"
+            "region": "USA, Canada, or replacement unit",
+            "appleIdentifierLookup": {
+                "sku": "iPhone 4",
+                "variant": "GSM"
+            },
+            "type": "Retail",
+            "colour": "Black",
+            "appleIdentifier": "iPhone3,1",
+            "size": "32GB"
         }
     },
     "system": {
