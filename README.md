@@ -21,6 +21,12 @@ Authentication to ricloud is performed using a token provided by Reincubate, whi
 
 #### Apple
 
+##### A note on terminology
+
+A number of the identifier names that Apple used are often re-used in different contexts. For instance, whilst your Apple product's box may say its model is `MC922LL/A`, Apple's "[Identify your iPhone model](https://support.apple.com/en-gb/HT201296)" page only references identifiers with the format `A1865`. These are completely different IDs. If you're using iTunes to learn about your device, it could tell you that your "model identifier" is `iPhone10,6`. This is yet a third type of identifier.
+
+
+
 ##### Apple serial numbers: legacy (80s & 90s), old (early 2000s) and post-2010 formats
 
 ```bash
@@ -110,6 +116,8 @@ $ python -m deviceidentifier.cli.apple_identifier iPhone5,3
 ```
 
 ##### Apple internal names
+
+These are referred to as the "board ID" in some areas by Apple. However, it is not the same as the [BOaRD ID](https://www.theiphonewiki.com/wiki/BORD) or the logic board ID that Macs use (eg. *Mac-F4208DC8*), and as such we felt that term was unhelpful.
 
 ```bash
 $ python -m deviceidentifier.cli.apple_internal_name N92AP
