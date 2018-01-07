@@ -1,20 +1,16 @@
 #!/usr/bin/env python
-from deviceidentifier.api import query
+from deviceidentifier import api
 
-import os, sys, json
+import sys, json
+
 
 def main():
     # Look at what we can get with the identifiers from an iTunes backup.
 
     if len(sys.argv) != 6:
         print 'Usage: provide an identifier, a serial number, an internal name, an IMEI and an ICCID'
-        print 'Try: iPhone3,1 5K31926NDZZ N90AP 358686054544170 8965880812100011146'
+        print 'Try: iPhone5,3 C8QH6T96DPNG N92AP 013554006297015 8965880812100011146'
         exit(-1)
-
-    if not 'RI_DEVID_TOKEN' in os.environ:
-        raise Exception( 'RI_DEVID_TOKEN API token environment variable not set; you must provde an API token' )
-
-    # We can also get UDID
 
     identifierCode = sys.argv[1:][0]
     serialNumber = sys.argv[1:][1]
@@ -23,8 +19,7 @@ def main():
     iccidCode = sys.argv[1:][4]
 
     print json.dumps(
-        query(
-            os.environ['RI_DEVID_TOKEN'],
+        api.enhance_metadata(
             apple_identifier=identifierCode,
             apple_serial=serialNumber,
             gsma_imei=imeiCode,

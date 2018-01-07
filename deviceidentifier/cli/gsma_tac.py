@@ -1,21 +1,17 @@
 #!/usr/bin/env python
-from deviceidentifier.api import query
+from deviceidentifier import api
 
-import os, sys, json
+import sys, json
 
 
 def main():
-    # Sample showing how to look up data from a GSMA IMEI.
+    # Sample showing how to look up data from a GSMA type allocation code.
 
     if len(sys.argv) < 2:
-        print 'Usage: provide a GSMA TAC for a breakdown of data on it.'
+        print 'Usage: provide a GSMA type allocation code for a breakdown of data on it.'
         exit(-1)
 
-    if not 'RI_DEVID_TOKEN' in os.environ:
-        raise Exception( 'RI_DEVID_TOKEN API token environment variable not set; you must provde an API token' )
-
-    gsma_tac = sys.argv[1:][0]
-    print json.dumps( query( os.environ['RI_DEVID_TOKEN'], gsma_tac=gsma_tac ), indent=4 )
+    print json.dumps( api.lookup( api.TYPE_GSMA_TAC, sys.argv[1:][0] ), indent=4 )
 
 if __name__ == '__main__':
     main()
