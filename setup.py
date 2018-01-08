@@ -25,7 +25,7 @@ setup(
 
     version=__version__,
 
-    description="Utils to manipulate and learn from assorted device identifier formats via Reincubate's API.",
+    description="Utils to manipulate and learn from assorted device identifier formats via Reincubate's DeviceIdentifier API.",
     long_description=markdown2rst('README.md'),
 
     url='https://github.com/reincubate/deviceidentifier-py',

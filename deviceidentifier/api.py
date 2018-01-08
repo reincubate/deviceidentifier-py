@@ -26,7 +26,7 @@ VALID_TYPES = [
     TYPE_GSMA_ICCID, TYPE_GSMA_IMEI, TYPE_GSMA_TAC,
 ]
 
-TOKEN_ENV = os.environ['RI_DEVID_TOKEN']
+TOKEN_ENV = os.environ.get( 'RI_DEVID_TOKEN', None )
 
 
 def lookup( type, identifier, token=None, ):
