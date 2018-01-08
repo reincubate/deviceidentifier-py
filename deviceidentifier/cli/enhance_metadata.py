@@ -25,7 +25,7 @@ def main():
             gsma_imei=imeiCode,
             gsma_iccid=iccidCode,
         ),
-        indent=4
+        indent=4, sort_keys=True, ensure_ascii=False, encoding='utf8'
     )
 
 if __name__ == '__main__':

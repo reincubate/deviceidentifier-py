@@ -11,7 +11,10 @@ def main():
         print 'Usage: provide an unknown identifier for a list of potential identities.'
         exit(-1)
 
-    print json.dumps( api.identify_identifier( sys.argv[1:][0] ), indent=4 )
+    print json.dumps(
+        api.identify_identifier( sys.argv[1:][0] ),
+        indent=4, sort_keys=True, ensure_ascii=False, encoding='utf8'
+    )
 
 if __name__ == '__main__':
     main()
