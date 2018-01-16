@@ -2,7 +2,7 @@
 
 Utils to manipulate and learn from assorted device identifier formats via Reincubate's [DeviceIdentifier API](https://www.reincubate.com/deviceidentifier-api/).
 
-Technical documentation is available on [Reincubate's site](https://docs.reincubate.com/deviceidentifier/?utm_source=github&utm_medium=deviceidentifier-csharp&utm_campaign=deviceidentifier).
+Technical documentation is available on [Reincubate's site](https://docs.reincubate.com/deviceidentifier/?utm_source=github&utm_medium=deviceidentifier-py&utm_campaign=deviceidentifier).
 
 ## Getting started
 
