@@ -15,7 +15,7 @@ class TestLookups(object):
 
     def test_misformed(self):
         with pytest.raises(InvalidIdentifierError) as exc_info:
-            api.lookup( api.TYPE_APPLE_IDENTIFIER, 'XXBADSERIALXX', )
+            api.lookup( api.TYPE_APPLE_SERIAL, 'XXBADSERIALXX', )
 
     def test_calls(self):
         api.lookup( api.TYPE_APPLE_ANUMBER,         'A1784', )
