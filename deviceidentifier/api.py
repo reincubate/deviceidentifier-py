@@ -77,6 +77,7 @@ def enhance_metadata( apple_anumber=None, apple_identifier=None, apple_idfa=None
                       apple_udid=None,
                       cdma_meid=None,
                       gsma_imei=None, gsma_iccid=None, gsma_tac=None,
+                      additional={},
                       token=None, ):
     if not token and TOKEN_ENV:
         token = TOKEN_ENV
@@ -113,6 +114,9 @@ def enhance_metadata( apple_anumber=None, apple_identifier=None, apple_idfa=None
         built_query['identifiers']['gsma_iccid'] = gsma_iccid
     if gsma_tac:
         built_query['identifiers']['gsma_tac'] = gsma_tac
+
+    if additional:
+        built_query['identifiers']['additional'] = additional
 
     if len( built_query['identifiers'].keys() ) == 0:
         raise BadRequestError( 'No identifiers passed to query' )
